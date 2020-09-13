@@ -30,6 +30,9 @@ class Course(models.Model):
     slug = models.SlugField(max_length=200, unique=True, verbose_name = 'url курса:' )
     overview = models.TextField(verbose_name = 'Краткое описание курса:')
     created = models.DateTimeField(auto_now_add=True)
+    students = models.ManyToManyField(User,
+                                      related_name='courses_joined',
+                                      blank=True)
 
     class Meta:
         verbose_name_plural = 'Учебные курсы'
